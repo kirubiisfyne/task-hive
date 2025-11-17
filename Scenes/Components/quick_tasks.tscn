@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpabtugtsb51y"]
+
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="1_jnfrg"]
+
+[node name="Quick Tasks" type="Button"]
+custom_minimum_size = Vector2(358, 324)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+focus_mode = 0
+icon = ExtResource("1_jnfrg")
+flat = true
+
+[node name="Hive" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 72.0
+offset_right = 240.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 12
+text = "Quick"
+
+[node name="Hive Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 24
+text = "Tasks"

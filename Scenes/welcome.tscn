@@ -1,13 +1,57 @@
-[gd_scene format=3 uid="uid://vdqxdshqnqek"]
+[gd_scene load_steps=2 format=3 uid="uid://vdqxdshqnqek"]
+
+[ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://Assets/Fonts/Dunkin-Regular.ttf" id="1_momec"]
 
 [node name="Welcome" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9647059, 0.9529412, 1, 1)
+
+[node name="Root" type="Control" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Organize" type="Button" parent="CanvasLayer/Background/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Organize"
+
+[node name="TaskHive" type="Label" parent="CanvasLayer/Background/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -150.0
+offset_right = 122.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.39215687, 0.1882353, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("1_momec")
+theme_override_font_sizes/font_size = 48
+text = "TaskHive"

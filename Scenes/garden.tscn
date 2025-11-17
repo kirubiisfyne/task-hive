@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpcjktfnwwy0r"]
+
+[ext_resource type="Script" uid="uid://dvlfwjr4yuf4l" path="res://Scenes/hives_container.gd" id="1_n2vb7"]
+[ext_resource type="PackedScene" uid="uid://d0wdebfkarc5i" path="res://Scenes/Components/task_hive.tscn" id="1_ynvo8"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="2_jh4tr"]
+[ext_resource type="PackedScene" uid="uid://cpwitw6wl01cv" path="res://Scenes/Components/add_task.tscn" id="3_mlwpc"]
+[ext_resource type="Texture2D" uid="uid://lfml3ot5klfs" path="res://Assets/welcome.png" id="5_jh4tr"]
+
+[node name="garden" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9647059, 0.9529412, 1, 1)
+
+[node name="Root" type="Control" parent="CanvasLayer/Background"]
+anchors_preset = 0
+offset_right = 390.0
+offset_bottom = 844.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Background/Root"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.25
+offset_top = 41.0
+offset_right = 134.25
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Hives Container" type="Container" parent="CanvasLayer/Background/Root/ScrollContainer"]
+custom_minimum_size = Vector2(658.5, 842)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_n2vb7")
+hex_width = 358.0
+hex_height = 324.0
+spacing = 16.0
+items_per_row = 2
+
+[node name="Quick Tasks" type="Button" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container"]
+custom_minimum_size = Vector2(358, 324)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+focus_mode = 0
+icon = ExtResource("2_jh4tr")
+flat = true
+
+[node name="Quick" type="Label" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Quick Tasks"]
+layout_mode = 0
+offset_left = 164.25
+offset_top = 71.0
+offset_right = 276.25
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 12
+text = "Quick"
+
+[node name="Tasks" type="Label" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Quick Tasks"]
+layout_mode = 0
+offset_left = 164.25
+offset_top = 79.0
+offset_right = 276.25
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 24
+text = "Tasks"
+
+[node name="TaskHive" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("1_ynvo8")]
+layout_mode = 2
+
+[node name="TaskHive2" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("1_ynvo8")]
+layout_mode = 2
+
+[node name="Add Task" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("3_mlwpc")]
+layout_mode = 2
+script = null
+
+[node name="Welcome Tab" type="TextureRect" parent="CanvasLayer/Background/Root"]
+layout_mode = 0
+offset_left = -82.0
+offset_top = -256.0
+offset_right = 396.0
+offset_bottom = 245.0
+texture = ExtResource("5_jh4tr")
+
+[connection signal="button_down" from="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Add Task" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_add_task_button_down"]

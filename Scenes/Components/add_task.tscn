@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpwitw6wl01cv"]
+
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="1_okwc8"]
+[ext_resource type="Texture2D" uid="uid://vh321q0tgrxu" path="res://Assets/newhiveicon.png" id="2_5qirm"]
+
+[sub_resource type="GDScript" id="GDScript_la0c6"]
+script/source = "extends Button
+
+
+"
+
+[node name="Add Task" type="Button"]
+custom_minimum_size = Vector2(358, 324)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+focus_mode = 0
+icon = ExtResource("1_okwc8")
+flat = true
+script = SubResource("GDScript_la0c6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5qirm")
