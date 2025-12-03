@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vdqxdshqnqek"]
 
-[ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://Assets/Fonts/Dunkin-Regular.ttf" id="1_momec"]
+[ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://assets/fonts/Dunkin-Regular.ttf" id="1_momec"]
 
 [node name="Welcome" type="Node"]
 

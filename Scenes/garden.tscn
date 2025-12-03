@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dpcjktfnwwy0r"]
 
-[ext_resource type="Script" uid="uid://dvlfwjr4yuf4l" path="res://Scenes/hives_container.gd" id="1_n2vb7"]
-[ext_resource type="PackedScene" uid="uid://d0wdebfkarc5i" path="res://Scenes/Components/task_hive.tscn" id="1_ynvo8"]
-[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="2_jh4tr"]
-[ext_resource type="PackedScene" uid="uid://cpwitw6wl01cv" path="res://Scenes/Components/add_task.tscn" id="3_mlwpc"]
-[ext_resource type="Texture2D" uid="uid://lfml3ot5klfs" path="res://Assets/welcome.png" id="5_jh4tr"]
+[ext_resource type="Script" uid="uid://dvlfwjr4yuf4l" path="res://scripts/hives_container.gd" id="1_n2vb7"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="2_jh4tr"]
+[ext_resource type="PackedScene" uid="uid://cpwitw6wl01cv" path="res://scenes/components/add_task.tscn" id="3_mlwpc"]
+[ext_resource type="Texture2D" uid="uid://lfml3ot5klfs" path="res://assets/welcome.png" id="5_jh4tr"]
+[ext_resource type="Texture2D" uid="uid://vio8fhj45yx0" path="res://assets/hexagon.png" id="6_o5anx"]
 
 [node name="garden" type="Node"]
 
@@ -39,7 +39,7 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="Hives Container" type="Container" parent="CanvasLayer/Background/Root/ScrollContainer"]
-custom_minimum_size = Vector2(658.5, 842)
+custom_minimum_size = Vector2(684, 502)
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -78,22 +78,70 @@ offset_bottom = 150.0
 theme_override_font_sizes/font_size = 24
 text = "Tasks"
 
-[node name="TaskHive" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("1_ynvo8")]
-layout_mode = 2
-
-[node name="TaskHive2" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("1_ynvo8")]
-layout_mode = 2
-
 [node name="Add Task" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("3_mlwpc")]
 layout_mode = 2
 script = null
 
-[node name="Welcome Tab" type="TextureRect" parent="CanvasLayer/Background/Root"]
+[node name="Welcome" type="TextureRect" parent="CanvasLayer/Background/Root"]
+custom_minimum_size = Vector2(358, 324)
 layout_mode = 0
 offset_left = -82.0
-offset_top = -256.0
-offset_right = 396.0
-offset_bottom = 245.0
+offset_top = -290.0
+offset_right = 312.0
+offset_bottom = 146.0
 texture = ExtResource("5_jh4tr")
 
+[node name="New Hive" type="Control" parent="CanvasLayer/Background/Root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Background/Root/New Hive"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.15, 0.6862745)
+
+[node name="Cell" type="TextureRect" parent="CanvasLayer/Background/Root/New Hive"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -232.0
+offset_right = 256.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o5anx")
+
+[node name="Hive Name Input" type="LineEdit" parent="CanvasLayer/Background/Root/New Hive/Cell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -16.0
+offset_right = 128.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 16)
+placeholder_text = "Hive Name"
+alignment = 1
+virtual_keyboard_type = 4
+flat = true
+
 [connection signal="button_down" from="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Add Task" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_add_task_button_down"]
+[connection signal="text_submitted" from="CanvasLayer/Background/Root/New Hive/Cell/Hive Name Input" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_hive_name_input_text_submitted"]

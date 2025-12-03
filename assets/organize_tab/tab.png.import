@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbd3tk6xyetn"
-path="res://.godot/imported/noaccountneeded..png-f9497b15171121214535da64c01f9b65.ctex"
+uid="uid://bgqq02cmfxay4"
+path="res://.godot/imported/tab.png-d4c784a953e7aac6905ff8d2de2d7dbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Organize Tab/noaccountneeded..png"
-dest_files=["res://.godot/imported/noaccountneeded..png-f9497b15171121214535da64c01f9b65.ctex"]
+source_file="res://assets/organize_tab/tab.png"
+dest_files=["res://.godot/imported/tab.png-d4c784a953e7aac6905ff8d2de2d7dbe.ctex"]
 
 [params]
 

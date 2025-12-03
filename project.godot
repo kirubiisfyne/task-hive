@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="TaskHive"
-run/main_scene="uid://vdqxdshqnqek"
+config/tags=PackedStringArray("app")
+run/main_scene="uid://dpcjktfnwwy0r"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+KanbanManager="*res://scripts/Globals/KanbanManager.gd"
 
 [display]
 

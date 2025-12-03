@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://hrt424wgyn5s"]
+
+[ext_resource type="Script" uid="uid://b82rh7cojyv6d" path="res://scripts/column_container.gd" id="2_y0neg"]
+
+[node name="Hive" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Root" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Column Container" type="HBoxContainer" parent="CanvasLayer/Root/ScrollContainer"]
+custom_minimum_size = Vector2(257, 54)
+layout_mode = 2
+script = ExtResource("2_y0neg")
+columny_width = 257.0
+spacing = -54.0
+items_per_row = 1
+stagger_offset = 120.0

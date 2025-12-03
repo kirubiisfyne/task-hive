@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cv2i3btov0in5"
-path="res://.godot/imported/Dunkin-Regular.ttf-1b9113b18488deb7764120a5fd4d3fbf.fontdata"
+path="res://.godot/imported/Dunkin-Regular.ttf-f13754b4e15874f6d6f09a17ed8bade0.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Dunkin-Regular.ttf"
-dest_files=["res://.godot/imported/Dunkin-Regular.ttf-1b9113b18488deb7764120a5fd4d3fbf.fontdata"]
+source_file="res://assets/fonts/Dunkin-Regular.ttf"
+dest_files=["res://.godot/imported/Dunkin-Regular.ttf-f13754b4e15874f6d6f09a17ed8bade0.fontdata"]
 
 [params]
 

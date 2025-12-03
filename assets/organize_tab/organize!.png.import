@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqakuxt0r3eex"
-path="res://.godot/imported/let’sgetgoingbeproductiveandachieveresults!startnowstartto.png-07c231e8b5b1938a99a25055aefa3c6d.ctex"
+uid="uid://q6rwikgl4mvg"
+path="res://.godot/imported/organize!.png-7b537b76ad74c92f9700916a6f1f23cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Organize Tab/let’sgetgoingbeproductiveandachieveresults!startnowstartto.png"
-dest_files=["res://.godot/imported/let’sgetgoingbeproductiveandachieveresults!startnowstartto.png-07c231e8b5b1938a99a25055aefa3c6d.ctex"]
+source_file="res://assets/organize_tab/organize!.png"
+dest_files=["res://.godot/imported/organize!.png-7b537b76ad74c92f9700916a6f1f23cc.ctex"]
 
 [params]
 
