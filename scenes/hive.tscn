@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hrt424wgyn5s"]
+[gd_scene load_steps=6 format=3 uid="uid://hrt424wgyn5s"]
 
+[ext_resource type="Texture2D" uid="uid://c3jxbq6namku4" path="res://assets/hive_top.png" id="2_2mrw7"]
 [ext_resource type="Script" uid="uid://b82rh7cojyv6d" path="res://scripts/column_container.gd" id="2_y0neg"]
+[ext_resource type="Script" uid="uid://ctfj2gydhpfdn" path="res://scripts/header.gd" id="3_c550q"]
+[ext_resource type="FontFile" uid="uid://b17de2iqife5j" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_qn66l"]
+[ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://assets/fonts/Dunkin-Regular.ttf" id="4_c550q"]
 
 [node name="Hive" type="Node"]
 
@@ -18,7 +22,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -27,6 +30,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 168.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -38,3 +42,82 @@ columny_width = 257.0
 spacing = -54.0
 items_per_row = 1
 stagger_offset = 120.0
+
+[node name="Header" type="TextureRect" parent="CanvasLayer/Root"]
+custom_minimum_size = Vector2(430, 168)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -227.0
+offset_top = -13.0
+offset_right = 227.0
+offset_bottom = 179.0
+grow_horizontal = 2
+texture = ExtResource("2_2mrw7")
+script = ExtResource("3_c550q")
+
+[node name="Delete" type="Label" parent="CanvasLayer/Root/Header"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -24.0
+offset_right = 99.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_c550q")
+theme_override_font_sizes/font_size = 18
+text = "Remove"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titles" type="Control" parent="CanvasLayer/Root/Header"]
+custom_minimum_size = Vector2(430, 168)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Hive" type="Label" parent="CanvasLayer/Root/Header/Titles"]
+custom_minimum_size = Vector2(38, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qn66l")
+theme_override_font_sizes/font_size = 12
+text = "Hive"
+horizontal_alignment = 1
+
+[node name="Hive Name" type="Label" parent="CanvasLayer/Root/Header/Titles"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -12.0
+offset_right = 111.5
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_c550q")
+theme_override_font_sizes/font_size = 24
+text = "Project Name"
+horizontal_alignment = 1
+vertical_alignment = 1

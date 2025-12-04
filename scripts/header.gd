@@ -1,0 +1,39 @@
+extends TextureRect
+
+# Called when checking if data can be dropped here
+func _can_drop_data(at_position: Vector2, data) -> bool:
+	# Accept only if data is a cell node (Control with card_id)
+	return data is Control and data.has_method("set_cell_data") and data.card_id != ""
+
+# Called when data is dropped
+func _drop_data(at_position: Vector2, data) -> void:
+	var cell = data as Control
+	if not cell or not cell.card_id:
+		return
+	
+	# Get board data from the cell
+	var board_data = cell.board_data
+	if not board_data:
+		push_error("No board data found on cell.")
+		return
+	
+	# Remove from board_data.cells
+	if cell.card_id in board_data.cells:
+		board_data.cells.erase(cell.card_id)
+	
+	# Remove from the parent column's cells array (updated for columnys/cells)
+	var parent_columny = cell.get_parent().get_parent()  # Assuming cell_container -> columny
+	if parent_columny and parent_columny.has_method("set_columny_data"):
+		for col in board_data.columnys:
+			if col["name"] == parent_columny.name:
+				if cell.card_id in col["cells"]:
+					col["cells"].erase(cell.card_id)
+				break
+	
+	# Remove the cell node from the scene
+	cell.queue_free()
+	
+	# Save changes
+	KanbanManager.save_current_board()
+	
+	print("Deleted cell: " + cell.card_id)

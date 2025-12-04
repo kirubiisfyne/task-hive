@@ -9,6 +9,9 @@
 custom_minimum_size = Vector2(257, 232)
 offset_right = 257.0
 offset_bottom = 232.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
 flat = true
 script = ExtResource("1_ae3n8")
 
@@ -48,6 +51,7 @@ alignment = 1
 flat = true
 
 [node name="Description" type="LineEdit" parent="Background"]
+custom_minimum_size = Vector2(214, 64)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -57,7 +61,10 @@ offset_top = 84.0
 offset_right = 107.0
 offset_bottom = 148.0
 grow_horizontal = 2
+theme_override_constants/minimum_character_width = 4
 theme_override_fonts/font = ExtResource("3_sxpw3")
 theme_override_font_sizes/font_size = 14
 placeholder_text = "Cell Description."
+virtual_keyboard_type = 4
 flat = true
+caret_blink = true
