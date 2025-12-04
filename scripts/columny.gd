@@ -10,7 +10,12 @@ const COLUMNY := preload("res://scenes/components/columny.tscn")
 var board_data: KanbanData
 
 func _ready() -> void:
-	board_data = KanbanManager.current_board
+	# Ensure board_data is set
+	if not board_data:
+		board_data = KanbanManager.current_board
+	if not board_data:
+		push_error("columny.gd: board_data is null!")
+		return
 
 	columny_title.text_submitted.connect(_on_text_changed)
 
@@ -28,41 +33,87 @@ func _keep_add_button_last():
 		cell_container.move_child(add_cell_button, cell_container.get_child_count() - 1)
 
 func set_columny_data(_columny_title: String, cell_ids: Array, data: KanbanData) -> void:
+	if not data:
+		push_error("columny.gd: data is null in set_columny_data!")
+		return
+	
 	board_data = data
 	columny_title.text = _columny_title
 	self.name = _columny_title
-
+	
+	print("Setting data for column: ", _columny_title, " with cells: ", cell_ids)
+	
 	if cell_container:
 		for child in cell_container.get_children():
 			if child != add_cell_button:
 				child.queue_free()
-
+		
 		for cell_id in cell_ids:
 			if cell_id in board_data.cells:
+				print("Loading cell: ", cell_id)
 				var cell_instance = CELL.instantiate()
-				cell_instance.set_cell_data(board_data.cells[cell_id], cell_id, board_data)
 				cell_container.add_child(cell_instance)
-
+				await get_tree().process_frame
+				cell_instance.set_cell_data(board_data.cells[cell_id], cell_id, board_data)
+			else:
+				push_error("Cell ID not found: ", cell_id)
+		
 		cell_container.show()
 		_keep_add_button_last()
 
 func _on_text_changed(new_text: String) -> void:
+	if not board_data:
+		push_error("columny.gd: board_data is null in _on_text_changed!")
+		return
+	
+	# Get the OLD name BEFORE changing anything
+	var old_name = self.name
+	print("Renaming column from '", old_name, "' to '", new_text, "'")
+	
+	# Update display
+	self.name = new_text
 	if cell_container:
 		cell_container.show()
-
-	self.name = new_text
-
-	for col in board_data.columnys:
-		if col["name"] == columny_title.text:
-			col["name"] = new_text
+	
+	# Check if we should RENAME or ADD NEW
+	var column_found = false
+	var column_index = -1
+	
+	# Search for the column with the OLD name
+	for i in range(board_data.columnys.size()):
+		if board_data.columnys[i]["name"] == old_name:
+			column_found = true
+			column_index = i
 			break
+	
+	if column_found:
+		# RENAME existing column
+		board_data.columnys[column_index]["name"] = new_text
+		print("Renamed column in data from '", old_name, "' to '", new_text, "'")
+	else:
+		# ADD NEW column (this is a brand new column)
+		var new_col = {"name": new_text, "cells": []}
+		board_data.columnys.append(new_col)
+		print("Added NEW column to data: ", new_text)
+	
+	# Save changes
 	KanbanManager.save_current_board()
-
-	var c = COLUMNY.instantiate()
-	get_parent().add_child(c)
+	print("Saved changes to board")
+	
+	# DEBUG: Print all columns after save
+	print("Current columns in data:")
+	for i in range(board_data.columnys.size()):
+		print("  ", i, ": ", board_data.columnys[i]["name"])
+	
+	# Only create a new empty column if this was an empty/placeholder column
+	if old_name == "" or old_name == "New Column" or old_name.begins_with("Column "):
+		var c = COLUMNY.instantiate()
+		get_parent().add_child(c)
+		print("Created new empty column for next entry")
 
 func _on_add_cell_pressed() -> void:
 	if not cell_container or not board_data:
+		push_error("columny.gd: cell_container or board_data is null!")
 		return
 
 	var cell_id = KanbanManager.generate_cell_id()
@@ -81,24 +132,27 @@ func _on_add_cell_pressed() -> void:
 			break
 
 	var cell_instance = CELL.instantiate()
-	cell_instance.set_cell_data(cell_data, cell_id, board_data)
 	cell_container.add_child(cell_instance)
+	await get_tree().process_frame
+	cell_instance.set_cell_data(cell_data, cell_id, board_data)
 
 	KanbanManager.save_current_board()
-
 	_keep_add_button_last()
 
-# New: Handle drops for moving cells between columns
+# Handle drops for moving cells between columns
 func _can_drop_data(at_position: Vector2, data) -> bool:
-	# Accept only cells from other columns (not this one)
-	return data is Control and data.has_method("set_cell_data") and data != self and data.get_parent() != cell_container
+	return data is Control and data.has_method("set_cell_data") and data.get_parent() != cell_container
 
 func _drop_data(at_position: Vector2, data) -> void:
-	var cell = data as Control
-	if not cell or not cell.card_id or not board_data:
+	if not board_data:
+		push_error("columny.gd: board_data is null in _drop_data!")
 		return
 	
-	# Remove from old column's data
+	var cell = data as Control
+	if not cell or not cell.card_id:
+		return
+	
+	# Remove from old column
 	var old_parent = cell.get_parent()
 	if old_parent and old_parent != cell_container:
 		for col in board_data.columnys:
@@ -106,24 +160,22 @@ func _drop_data(at_position: Vector2, data) -> void:
 				col["cells"].erase(cell.card_id)
 				break
 	
-	# Add to this column's data
+	# Add to this column
 	for col in board_data.columnys:
 		if col["name"] == self.name:
 			col["cells"].append(cell.card_id)
 			break
 	
-	# Move the cell node to this container
+	# Move node
 	if old_parent:
 		old_parent.remove_child(cell)
 	cell_container.add_child(cell)
-	cell_container.move_child(cell, cell_container.get_child_count() - 2)  # Before add button
+	cell_container.move_child(cell, cell_container.get_child_count() - 2)
 	
-	# Update cell status
+	# Update status
 	if cell.card_id in board_data.cells:
 		board_data.cells[cell.card_id]["status"] = self.name
 	
-	# Save and refresh layout
 	KanbanManager.save_current_board()
 	_keep_add_button_last()
-	
 	print("Moved cell " + cell.card_id + " to column " + self.name)

@@ -23,7 +23,7 @@ class_name HexContainer
 		queue_sort()
 
 # Preloads
-const HEXAGON := preload("res://Scenes/Components/task_hive.tscn")
+const HEXAGON := preload("res://scenes/components/task_hive.tscn")
 
 func _ready():
 	if not is_connected("child_order_changed", Callable(self, "_on_child_order_changed")):
@@ -112,5 +112,5 @@ func _on_add_task_button_down() -> void:
 func _on_hive_name_input_text_submitted(new_text: String) -> void:
 	instanciate_hives(new_text)
 
-	KanbanManager.create_board(new_text, "res://data/" + new_text + ".tres")
+	KanbanManager.create_board(new_text, "user://data/" + new_text + ".tres")
 	$"../../New Hive".hide()

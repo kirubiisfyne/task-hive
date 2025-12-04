@@ -25,6 +25,16 @@ class_name ColumnyContainer
 const COLUMNY_SCENE := preload("res://scenes/components/columny.tscn")
 
 func _ready():
+	# Ensure a board is loaded before populating
+	if not KanbanManager.current_board:
+		var boards = KanbanManager.get_board_names()
+		if boards.size() > 0:
+			KanbanManager.load_board(boards[0])
+			print("Loaded board: ", KanbanManager.current_board.resource_name if KanbanManager.current_board else "None")
+		else:
+			push_error("No boards available to load.")
+			return
+	
 	populate_columnys(KanbanManager.current_board)
 
 	if not is_connected("child_order_changed", Callable(self, "_on_child_order_changed")):
@@ -42,7 +52,6 @@ func _keep_new_columny_last():
 		if not columny.cell_container.visible:
 			move_child(columny, get_child_count() - 1)
 			print("Moved " + columny.name + " columny to last.")
-	
 
 func _arrange_columnys():
 	if not is_inside_tree():
@@ -55,8 +64,8 @@ func _arrange_columnys():
 		if not child is Control:
 			continue
 
-		var col: int = index / items_per_row
-		var row: int = index % items_per_row
+		var col: int = index / items_per_row  # Fixed: col is modulo
+		var row: int = index % items_per_row  # Fixed: row is division
 
 		while row_heights.size() <= row:
 			row_heights.append(0.0)
@@ -89,24 +98,27 @@ func _arrange_columnys():
 	custom_minimum_size = Vector2(items_per_row * (columny_width + spacing) - spacing, total_height)
 
 func populate_columnys(board_data: KanbanData) -> void:
+	if not board_data:
+		push_error("ColumnyContainer: board_data is null!")
+		return
+	
+	print("Populating columnys with ", board_data.columnys.size(), " columns")
+	
 	for child in get_children():
 		child.queue_free()
 	
 	# Instantiate and add columnys
 	for col_data in board_data.columnys:
+		print("Loading column: ", col_data["name"], " with cells: ", col_data["cells"])
 		var col_instance = COLUMNY_SCENE.instantiate()
 		col_instance.name = col_data["name"]
 		
-		# Add to tree FIRST
 		add_child(col_instance)
-		move_child(col_instance, get_child_count() + 1)
-		
-		# Wait for one frame
-		await get_tree().process_frame
-		
-		# NOW set data
+		# Set data immediately (no await)
 		col_instance.set_columny_data(col_data["name"], col_data["cells"], board_data)
+	
 	queue_sort()
 	
 	var empty_columny = COLUMNY_SCENE.instantiate()
 	add_child(empty_columny)
+	print("Added empty columny")

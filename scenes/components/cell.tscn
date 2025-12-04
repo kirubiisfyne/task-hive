@@ -65,6 +65,5 @@ theme_override_constants/minimum_character_width = 4
 theme_override_fonts/font = ExtResource("3_sxpw3")
 theme_override_font_sizes/font_size = 14
 placeholder_text = "Cell Description."
-virtual_keyboard_type = 4
 flat = true
 caret_blink = true

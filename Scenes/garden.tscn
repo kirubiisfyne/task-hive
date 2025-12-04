@@ -140,7 +140,6 @@ grow_vertical = 2
 pivot_offset = Vector2(128, 16)
 placeholder_text = "Hive Name"
 alignment = 1
-virtual_keyboard_type = 4
 flat = true
 
 [connection signal="button_down" from="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Add Task" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_add_task_button_down"]
