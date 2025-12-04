@@ -1,5 +1,30 @@
 extends TextureRect
 
+@onready var delete_label := $Delete
+@onready var titles_node := $Titles
+
+func _ready():
+	# Ensure initial state: show titles, hide delete
+	if titles_node:
+		titles_node.show()
+	if delete_label:
+		delete_label.hide()
+
+func _process(delta):
+	# Check if dragging is active globally
+	if get_viewport().gui_is_dragging():
+		# Hide titles and show delete label during drag
+		if titles_node:
+			titles_node.hide()
+		if delete_label:
+			delete_label.show()
+	else:
+		# Show titles and hide delete label when not dragging
+		if titles_node:
+			titles_node.show()
+		if delete_label:
+			delete_label.hide()
+
 # Called when checking if data can be dropped here
 func _can_drop_data(at_position: Vector2, data) -> bool:
 	# Accept only if data is a cell node (Control with card_id)
