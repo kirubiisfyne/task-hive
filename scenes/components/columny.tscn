@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv3od26spcmjn"]
+
+[ext_resource type="Script" uid="uid://dcbww31fughx" path="res://scripts/columny.gd" id="1_txsla"]
+[ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://assets/fonts/Dunkin-Regular.ttf" id="2_carvr"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="3_3s6m8"]
+[ext_resource type="Texture2D" uid="uid://vh321q0tgrxu" path="res://assets/newhiveicon.png" id="4_0tdcf"]
+
+[node name="Columny" type="Control"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 296.0
+mouse_filter = 1
+script = ExtResource("1_txsla")
+
+[node name="Columny Title" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(257, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.9882353, 0.47843137, 0.11764706, 1)
+theme_override_colors/font_placeholder_color = Color(0.99, 0.48180002, 0.11880001, 0.6)
+theme_override_fonts/font = ExtResource("2_carvr")
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Add Columny"
+alignment = 1
+flat = true
+
+[node name="Cell Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(257, 64)
+layout_mode = 1
+offset_top = 64.0
+offset_right = 257.0
+offset_bottom = 296.0
+theme_override_constants/separation = 8
+
+[node name="New Cell" type="Button" parent="Cell Container"]
+custom_minimum_size = Vector2(257, 232)
+layout_mode = 2
+mouse_filter = 1
+flat = true
+
+[node name="Background" type="TextureRect" parent="Cell Container/New Cell"]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 232.0
+texture = ExtResource("3_3s6m8")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Cell Container/New Cell/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0tdcf")

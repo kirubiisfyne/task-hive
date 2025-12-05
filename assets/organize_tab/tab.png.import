@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyohsq01eosla"
-path="res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"
+uid="uid://bgqq02cmfxay4"
+path="res://.godot/imported/tab.png-d4c784a953e7aac6905ff8d2de2d7dbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/orange_hexagon.png"
-dest_files=["res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"]
+source_file="res://assets/organize_tab/tab.png"
+dest_files=["res://.godot/imported/tab.png-d4c784a953e7aac6905ff8d2de2d7dbe.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbd3tk6xyetn"
-path="res://.godot/imported/noaccountneeded..png-f9497b15171121214535da64c01f9b65.ctex"
+uid="uid://blxlxk352vgu5"
+path="res://.godot/imported/hive_top.png-fbf230966664a35460482cb98770527b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Organize Tab/noaccountneeded..png"
-dest_files=["res://.godot/imported/noaccountneeded..png-f9497b15171121214535da64c01f9b65.ctex"]
+source_file="res://assets/organize_tab/hive_top.png"
+dest_files=["res://.godot/imported/hive_top.png-fbf230966664a35460482cb98770527b.ctex"]
 
 [params]
 

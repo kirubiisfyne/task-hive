@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyohsq01eosla"
-path="res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"
+uid="uid://bo42byp1l4anl"
+path="res://.godot/imported/backicon@2x.png-53ee505c9af7f68a43fe0790a6e65383.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/orange_hexagon.png"
-dest_files=["res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"]
+source_file="res://assets/fonts/backicon@2x.png"
+dest_files=["res://.godot/imported/backicon@2x.png-53ee505c9af7f68a43fe0790a6e65383.ctex"]
 
 [params]
 

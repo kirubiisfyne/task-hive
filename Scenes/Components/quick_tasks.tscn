@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpabtugtsb51y"]
 
-[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="1_jnfrg"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="1_jnfrg"]
 
 [node name="Quick Tasks" type="Button"]
 custom_minimum_size = Vector2(358, 324)
@@ -8,6 +8,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("1_jnfrg")
 flat = true
 

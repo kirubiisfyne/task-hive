@@ -1,20 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0wdebfkarc5i"]
 
-[ext_resource type="Texture2D" uid="uid://vio8fhj45yx0" path="res://Assets/hexagon.png" id="1_jepci"]
-
-[sub_resource type="GDScript" id="GDScript_jepci"]
-script/source = "extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[ext_resource type="Texture2D" uid="uid://vio8fhj45yx0" path="res://assets/hexagon.png" id="1_jepci"]
+[ext_resource type="Script" uid="uid://bbi3vw05njxac" path="res://scripts/task_hive.gd" id="2_ce2qn"]
 
 [node name="TaskHive" type="Button"]
 custom_minimum_size = Vector2(358, 324)
@@ -24,25 +11,42 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("1_jepci")
 flat = true
-script = SubResource("GDScript_jepci")
+script = ExtResource("2_ce2qn")
 
 [node name="Hive" type="Label" parent="."]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 72.0
-offset_right = 182.0
-offset_bottom = 89.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -46.0
+offset_right = 41.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "Hive"
 
 [node name="Hive Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 80.0
-offset_right = 294.0
-offset_bottom = 151.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -35.5
+offset_right = 41.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-text = "Hive
-Name"
+text = "TaskHive"
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

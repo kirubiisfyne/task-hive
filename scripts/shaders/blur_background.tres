@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://rbhuejkbtmav"]
+
+[ext_resource type="Shader" uid="uid://di2dmaxs8sq3i" path="res://scripts/shaders/blur_background.gdshader" id="1_230mx"]
+
+[resource]
+shader = ExtResource("1_230mx")
+shader_parameter/radius = 6.0

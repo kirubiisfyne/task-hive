@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3xaq3k4j68gy"
-path="res://.godot/imported/roundedrectangle.png-1cad08f9efc8d5c8c9170ee3ce66e884.ctex"
+uid="uid://dvbd3tk6xyetn"
+path="res://.godot/imported/noaccountneeded..png-5bfc20913df6306942b25409a9a2d882.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Organize Tab/roundedrectangle.png"
-dest_files=["res://.godot/imported/roundedrectangle.png-1cad08f9efc8d5c8c9170ee3ce66e884.ctex"]
+source_file="res://assets/organize_tab/noaccountneeded..png"
+dest_files=["res://.godot/imported/noaccountneeded..png-5bfc20913df6306942b25409a9a2d882.ctex"]
 
 [params]
 

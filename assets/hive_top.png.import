@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyohsq01eosla"
-path="res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"
+uid="uid://c3jxbq6namku4"
+path="res://.godot/imported/hive_top.png-f348ac7dcf9a96c03b6bd5fe2b7fda0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/orange_hexagon.png"
-dest_files=["res://.godot/imported/orange_hexagon.png-040c160043b451d7dacf77efd1e8db87.ctex"]
+source_file="res://assets/hive_top.png"
+dest_files=["res://.godot/imported/hive_top.png-f348ac7dcf9a96c03b6bd5fe2b7fda0d.ctex"]
 
 [params]
 

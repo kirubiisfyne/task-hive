@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqq02cmfxay4"
-path="res://.godot/imported/tab.png-b0deab88ec5a9c0e9801658f2a3dc829.ctex"
+uid="uid://bbao32k2c3dvf"
+path="res://.godot/imported/backicon.png-eab4abc32b480817ef21b5584fab875e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Organize Tab/tab.png"
-dest_files=["res://.godot/imported/tab.png-b0deab88ec5a9c0e9801658f2a3dc829.ctex"]
+source_file="res://assets/backicon.png"
+dest_files=["res://.godot/imported/backicon.png-eab4abc32b480817ef21b5584fab875e.ctex"]
 
 [params]
 

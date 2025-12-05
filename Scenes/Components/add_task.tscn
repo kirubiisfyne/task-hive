@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpwitw6wl01cv"]
 
-[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://Assets/orange_hexagon.png" id="1_okwc8"]
-[ext_resource type="Texture2D" uid="uid://vh321q0tgrxu" path="res://Assets/newhiveicon.png" id="2_5qirm"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="1_okwc8"]
+[ext_resource type="Texture2D" uid="uid://vh321q0tgrxu" path="res://assets/newhiveicon.png" id="2_5qirm"]
 
 [sub_resource type="GDScript" id="GDScript_la0c6"]
 script/source = "extends Button
-
-
 "
 
 [node name="Add Task" type="Button"]
 custom_minimum_size = Vector2(358, 324)
+offset_right = 366.0
+offset_bottom = 332.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
