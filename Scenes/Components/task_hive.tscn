@@ -11,6 +11,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("1_jepci")
 flat = true
 script = ExtResource("2_ce2qn")
@@ -48,4 +49,4 @@ theme_override_font_sizes/font_size = 24
 text = "TaskHive"
 autowrap_mode = 2
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

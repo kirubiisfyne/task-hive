@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://hrt424wgyn5s"]
+[gd_scene load_steps=9 format=3 uid="uid://hrt424wgyn5s"]
 
 [ext_resource type="Texture2D" uid="uid://c3jxbq6namku4" path="res://assets/hive_top.png" id="2_2mrw7"]
 [ext_resource type="Script" uid="uid://b82rh7cojyv6d" path="res://scripts/column_container.gd" id="2_y0neg"]
 [ext_resource type="Script" uid="uid://ctfj2gydhpfdn" path="res://scripts/header.gd" id="3_c550q"]
 [ext_resource type="FontFile" uid="uid://b17de2iqife5j" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_qn66l"]
 [ext_resource type="FontFile" uid="uid://cv2i3btov0in5" path="res://assets/fonts/Dunkin-Regular.ttf" id="4_c550q"]
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="6_xgw1h"]
+[ext_resource type="Texture2D" uid="uid://c8s43ion72s8x" path="res://assets/backicon@2x.png" id="7_q7y6d"]
+[ext_resource type="Script" uid="uid://cckjnjwe52apo" path="res://scenes/back_button.gd" id="7_wunoa"]
 
 [node name="Hive" type="Node"]
 
@@ -16,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.9647059, 0.9529412, 1, 1)
 
 [node name="Root" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -26,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Root"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +38,9 @@ anchor_bottom = 1.0
 offset_top = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
 [node name="Column Container" type="HBoxContainer" parent="CanvasLayer/Root/ScrollContainer"]
 custom_minimum_size = Vector2(257, 54)
@@ -121,3 +129,33 @@ theme_override_font_sizes/font_size = 24
 text = "Project Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button Base" type="TextureRect" parent="CanvasLayer/Root"]
+layout_mode = 0
+offset_left = -168.0
+offset_top = 776.0
+offset_right = 190.0
+offset_bottom = 1100.0
+texture = ExtResource("6_xgw1h")
+script = ExtResource("7_wunoa")
+
+[node name="Back Button" type="Button" parent="CanvasLayer/Root/Button Base"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -308.0
+offset_right = 298.0
+offset_bottom = -252.0
+grow_vertical = 0
+scale = Vector2(0.71, 0.71)
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.96862745, 0.9529412, 1, 1)
+theme_override_fonts/font = ExtResource("4_c550q")
+theme_override_font_sizes/font_size = 22
+text = " Back"
+icon = ExtResource("7_q7y6d")
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Root/Button Base/Back Button" to="CanvasLayer/Root/Button Base" method="_on_back_button_pressed"]

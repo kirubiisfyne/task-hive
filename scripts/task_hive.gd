@@ -23,5 +23,5 @@ func load_board() -> void:
 	KanbanManager.current_board = KanbanManager.load_board(self.name)
 	get_tree().change_scene_to_file("res://scenes/hive.tscn")
 
-func _on_button_down() -> void:
+func _on_pressed() -> void:
 	load_board()

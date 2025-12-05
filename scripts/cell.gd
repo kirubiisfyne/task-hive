@@ -67,33 +67,63 @@ func _create_drag_preview() -> Control:
 	preview.modulate = Color(1, 1, 1, 0.5)
 	return preview
 
-# Handle input for mouse and touch
+var hold_time := 0.25
+var dragging := false
+var touch_down := false
+var hold_timer := 0.0
+
 func _gui_input(event: InputEvent) -> void:
-	# Mouse handling
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				# Start drag on mouse down
-				force_drag(self, _create_drag_preview())
-				is_dragging = true
-			else:
-				# End drag on mouse up
-				is_dragging = false
-	
-	# Touch handling
-	elif event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and event.pressed:
+		touch_down = true
+		hold_timer = 0.0
+		dragging = false
+
+	elif event is InputEventScreenTouch and not event.pressed:
+		touch_down = false
+		if dragging:
+			dragging = false
+		return
+
+	elif event is InputEventScreenDrag and not dragging:
+		if abs(event.relative.y) > abs(event.relative.x):
+			touch_down = false
+			hold_timer = 0.0
+			return
+
+		hold_timer += event.speed.length() / 3000.0
+
+		if hold_timer >= hold_time:
+			_start_drag()
+
+	elif event is InputEventScreenDrag and dragging:
+		set_drag_preview(_create_drag_preview())
+		force_drag(self, _create_drag_preview())
+		return
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			# Start potential drag on touch down
-			is_dragging = true  # Wait for drag to confirm
+			_start_drag()
 		else:
-			# End touch
-			is_dragging = false
-	
-	elif event is InputEventScreenDrag and is_dragging:
-		# If we're dragging via touch, start the drag if not already
-		if not is_dragging:  # Redundant, but safe
-			force_drag(self, _create_drag_preview())
-			is_dragging = true
+			dragging = false
+
+func _start_drag():
+	var vp = get_viewport()
+
+	# Prevent double-drag initialization
+	if vp.gui_is_dragging():
+		return
+
+	if dragging:
+		return
+
+	dragging = true
+	touch_down = false
+
+	var preview = _create_drag_preview()
+	set_drag_preview(preview)
+	force_drag(self, preview)
+
+
 
 # Optional: Add delete functionality
 func delete_card() -> void:

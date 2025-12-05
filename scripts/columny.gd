@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 const CELL := preload("res://scenes/components/cell.tscn")
@@ -27,6 +28,7 @@ func _ready() -> void:
 
 func _on_cell_container_child_order_changed():
 	_keep_add_button_last()
+	adjust_by_content()
 
 func _keep_add_button_last():
 	if add_cell_button and cell_container:
@@ -106,10 +108,11 @@ func _on_text_changed(new_text: String) -> void:
 		print("  ", i, ": ", board_data.columnys[i]["name"])
 	
 	# Only create a new empty column if this was an empty/placeholder column
-	if old_name == "" or old_name == "New Column" or old_name.begins_with("Column "):
+	if old_name:
 		var c = COLUMNY.instantiate()
 		get_parent().add_child(c)
-		print("Created new empty column for next entry")
+		c.columny_title.text = ""
+
 
 func _on_add_cell_pressed() -> void:
 	if not cell_container or not board_data:
@@ -179,3 +182,14 @@ func _drop_data(at_position: Vector2, data) -> void:
 	KanbanManager.save_current_board()
 	_keep_add_button_last()
 	print("Moved cell " + cell.card_id + " to column " + self.name)
+
+func adjust_by_content() -> void:
+	var total_height := 368
+
+	for child in cell_container.get_children():
+		if child == add_cell_button:
+			continue
+		total_height += child.get_combined_minimum_size().y + 8
+
+	custom_minimum_size.y = total_height
+	print("Adjusted Height: %s px" % total_height)

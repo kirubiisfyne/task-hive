@@ -2,6 +2,7 @@ extends TextureRect
 
 @onready var delete_label := $Delete
 @onready var titles_node := $Titles
+@onready var hive_name := $"Titles/Hive Name"
 
 func _ready():
 	# Ensure initial state: show titles, hide delete
@@ -9,6 +10,23 @@ func _ready():
 		titles_node.show()
 	if delete_label:
 		delete_label.hide()
+	
+	# Update hive name from database
+	update_hive_name()
+
+func update_hive_name():
+	var board_name = get_current_board_name()
+	if hive_name:
+		hive_name.text = board_name
+		print("Set hive name to: ", board_name)
+
+func get_current_board_name() -> String:
+	if KanbanManager.current_board and KanbanManager.head_data:
+		# Find the board name by matching the resource path
+		for board_key in KanbanManager.head_data.boards:
+			if KanbanManager.head_data.boards[board_key] == KanbanManager.current_board.resource_path:
+				return board_key
+	return "Default Hive"  # Fallback if not found
 
 func _process(delta):
 	# Check if dragging is active globally

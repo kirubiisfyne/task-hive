@@ -9,6 +9,8 @@ script/source = "extends Button
 
 [node name="Add Task" type="Button"]
 custom_minimum_size = Vector2(358, 324)
+offset_right = 366.0
+offset_bottom = 332.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0

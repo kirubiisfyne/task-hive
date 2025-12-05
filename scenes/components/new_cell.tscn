@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr08kf25dpl85"]
+
+[ext_resource type="Texture2D" uid="uid://cyohsq01eosla" path="res://assets/orange_hexagon.png" id="1_g2gvm"]
+[ext_resource type="Texture2D" uid="uid://vh321q0tgrxu" path="res://assets/newhiveicon.png" id="2_7h0ml"]
+
+[node name="New Cell" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+mouse_filter = 1
+flat = true
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(257, 232)
+layout_mode = 0
+offset_left = -64.0
+offset_top = -52.0
+offset_right = 193.0
+offset_bottom = 180.0
+texture = ExtResource("1_g2gvm")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7h0ml")

@@ -106,7 +106,8 @@ func instanciate_hives(hive_name: String) -> void:
 	h.name = hive_name
 	$".".add_child(h)
 # Signals
-func _on_add_task_button_down() -> void:
+
+func _on_add_task_pressed() -> void:
 	$"../../New Hive".show()
 
 func _on_hive_name_input_text_submitted(new_text: String) -> void:

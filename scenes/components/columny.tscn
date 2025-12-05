@@ -11,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 296.0
+mouse_filter = 1
 script = ExtResource("1_txsla")
 
 [node name="Columny Title" type="LineEdit" parent="."]
@@ -20,6 +21,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 64.0
 grow_horizontal = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.9882353, 0.47843137, 0.11764706, 1)
 theme_override_colors/font_placeholder_color = Color(0.99, 0.48180002, 0.11880001, 0.6)
 theme_override_fonts/font = ExtResource("2_carvr")
@@ -29,7 +31,6 @@ alignment = 1
 flat = true
 
 [node name="Cell Container" type="VBoxContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(257, 64)
 layout_mode = 1
 offset_top = 64.0
@@ -44,7 +45,6 @@ mouse_filter = 1
 flat = true
 
 [node name="Background" type="TextureRect" parent="Cell Container/New Cell"]
-custom_minimum_size = Vector2(257, 232)
 layout_mode = 0
 offset_right = 257.0
 offset_bottom = 232.0

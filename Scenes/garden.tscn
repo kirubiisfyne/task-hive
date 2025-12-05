@@ -31,10 +31,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -134.25
 offset_top = 41.0
-offset_right = 134.25
+offset_right = 159.75
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -57,6 +58,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("2_jh4tr")
 flat = true
 
@@ -79,6 +81,7 @@ theme_override_font_sizes/font_size = 24
 text = "Tasks"
 
 [node name="Add Task" parent="CanvasLayer/Background/Root/ScrollContainer/Hives Container" instance=ExtResource("3_mlwpc")]
+custom_minimum_size = Vector2(358, 324)
 layout_mode = 2
 script = null
 
@@ -93,6 +96,7 @@ texture = ExtResource("5_jh4tr")
 
 [node name="New Hive" type="Control" parent="CanvasLayer/Background/Root"]
 visible = false
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,5 +146,5 @@ placeholder_text = "Hive Name"
 alignment = 1
 flat = true
 
-[connection signal="button_down" from="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Add Task" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_add_task_button_down"]
+[connection signal="pressed" from="CanvasLayer/Background/Root/ScrollContainer/Hives Container/Add Task" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_add_task_pressed"]
 [connection signal="text_submitted" from="CanvasLayer/Background/Root/New Hive/Cell/Hive Name Input" to="CanvasLayer/Background/Root/ScrollContainer/Hives Container" method="_on_hive_name_input_text_submitted"]
